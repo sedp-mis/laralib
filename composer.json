@@ -1,0 +1,26 @@
+{
+    "name": "sedp-mis/laralib",
+    "description": "Library or collection of classes, helpers and extensions for Laravel codebase.",
+    "keywords": ["library", "lib", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arjon Jason Castro",
+            "email": "ajcastro29@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravel/framework": ">=4.2.11",
+        "sedp-mis/lib": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "SedpMis\\Laralib\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "minimum-stability": "stable"
+}
