@@ -8,7 +8,7 @@ if (!function_exists('collection')) {
      * Create items into new collection.
      *
      * @param  array|mixed $items
-     * @return \SedpMis\Lib\IlluminateExtensions\Collection
+     * @return \SedpMis\Laralib\Collection
      */
     function collection($items = null)
     {

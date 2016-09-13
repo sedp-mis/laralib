@@ -12,14 +12,14 @@
     "require": {
         "php": ">=5.4.0",
         "laravel/framework": ">=4.2.11",
-        "sedp-mis/lib": "dev-master"
+        "sedp-mis/lib": "2.*"
     },
     "autoload": {
         "psr-4": {
             "SedpMis\\Laralib\\": "src"
         },
         "files": [
-            "src/helpers.php"
+            "src/helpers/index.php"
         ]
     },
     "minimum-stability": "stable"
