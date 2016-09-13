@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
-
 namespace SedpMis\Laralib\Models;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
 
 class ModelNotFoundException extends EloquentModelNotFoundException
 {
