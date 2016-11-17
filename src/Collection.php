@@ -286,7 +286,7 @@ class Collection extends EloquentCollection
      * @param  string|array|callable $field
      * @return mixed
      */
-    public function sum($field)
+    public function sum($field = null)
     {
         if (is_string($field) || is_array($field)) {
             return $this->sumOf($field);
