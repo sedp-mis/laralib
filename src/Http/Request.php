@@ -10,7 +10,7 @@ class Request extends IlluminateRequest
      * Retrieve an input item from the request, or else fail when empty.
      *
      * @param  string  $key
-     * @return string
+     * @return mixed
      */
     public function inputOrFail($key = null)
     {

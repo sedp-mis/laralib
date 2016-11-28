@@ -2,7 +2,6 @@
 
 namespace SedpMis\Laralib\Models;
 
-
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use SedpMis\Lib\Transformer\Transformer;
 use Carbon\Carbon;
@@ -63,7 +62,7 @@ class BaseModel extends EloquentModel
     protected function getRelationshipFromMethod($key, $camelKey)
     {
         $relation = parent::getRelationshipFromMethod($key, $camelKey);
-        
+
         if (is_null($relation) && in_array($camelKey, $this->toNullModelRelations)) {
             return $this->relations[$key] = new NullModel;
         }
@@ -188,6 +187,7 @@ class BaseModel extends EloquentModel
 
         // Logic code
         $typecast = last(explode(static::TYPECASTS_SET_SEPARATOR, $this->typecasts[$attribute]));
+
         return trim($typecast) == '*' ? $this->getterTypecasts($attribute) : $typecast;
     }
 
@@ -264,7 +264,7 @@ class BaseModel extends EloquentModel
         if (!empty($this->typecasts)) {
             $array = $this->typecastAttributes($this->getterTypecasts(), $array);
         }
-        
+
         return $array;
     }
 
@@ -415,7 +415,7 @@ class BaseModel extends EloquentModel
      */
     public function clean()
     {
-        $fillable            = $this->getFillable();
+        $fillable = $this->getFillable();
         if (!in_array($pk = $this->getKeyName(), $fillable)) {
             $fillable[] = $pk;
         }

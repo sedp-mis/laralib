@@ -20,7 +20,7 @@ if (!function_exists('is_collection')) {
      * Determine if is instance of collection.
      *
      * @param  mixed  $var
-     * @return boolean
+     * @return bool
      */
     function is_collection($var)
     {

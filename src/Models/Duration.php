@@ -5,7 +5,7 @@ namespace SedpMis\Laralib\Models;
 use SedpMis\Lib\Breakdown\Breakdown;
 
 /**
- * Duration model with base unit in years. This is a value object that represents duration of time 
+ * Duration model with base unit in years. This is a value object that represents duration of time
  * which is useful for example like measuring membership length, length of stay, etc.
  */
 class Duration extends BaseModel
@@ -13,7 +13,7 @@ class Duration extends BaseModel
     protected $fillable = ['in_years'];
 
     protected $attributes = [
-        'in_years' => 0
+        'in_years' => 0,
     ];
 
     protected $formatLabels = [
@@ -42,7 +42,7 @@ class Duration extends BaseModel
         $breakdown = Breakdown::make([
             'year'  => 360,
             'month' => 30,
-            'day'   => 1
+            'day'   => 1,
         ])
         ->breakdown($this->inDays());
 

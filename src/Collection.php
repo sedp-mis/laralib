@@ -182,8 +182,8 @@ class Collection extends EloquentCollection
     /**
      * Where condition for data.
      *
-     * @param  array|string $field    The fields or field to test.
-     * @param  mixed        $value    Value to test.
+     * @param  array|string $field    The fields or field to test
+     * @param  mixed        $value    Value to test
      * @param  string       $operator Operand, please refer to the compare method
      * @return array
      */
@@ -313,7 +313,7 @@ class Collection extends EloquentCollection
      * @param  string $orderByClause The clause or condition of ordering the collection.
      *                               i.e.  'center_name DESC, full_name ASC'
      *                                     'center_name, full_name'
-     *                         Default order is ASC.
+     *                         Default order is ASC
      * @return object Collection
      */
     public function orderBy($orderByClause)
@@ -348,8 +348,8 @@ class Collection extends EloquentCollection
     /**
      * Get the formatted parameters of array_multisort function that will be used in call_user_func_array.
      *
-     * @param  array  $sortedArray  The sorted array parameter of array_multisort.
-     * @param  array  $sortFields   Field names and its corresponding sort order.
+     * @param  array  $sortedArray  The sorted array parameter of array_multisort
+     * @param  array  $sortFields   Field names and its corresponding sort order
      *
      * @return array  $params       Pre-formatted array of array_multisort function
      */
@@ -377,8 +377,8 @@ class Collection extends EloquentCollection
     /**
      * Get only the fields in the sortFields array.
      *
-     * @param  array   $sortFields Field names and its corresponding sort order.
-     * @param  int $fieldIndex Field index of the field.  Starting 1.
+     * @param  array   $sortFields Field names and its corresponding sort order
+     * @param  int $fieldIndex Field index of the field.  Starting 1
      *
      * @return array
      */
@@ -399,7 +399,7 @@ class Collection extends EloquentCollection
     /**
      * Create and formats order by clause.
      *
-     * @param  string $orderByClause The clause or condition of ordering the collection.
+     * @param  string $orderByClause The clause or condition of ordering the collection
      * @return array
      */
     private function orderByFields($orderByClause)
@@ -416,7 +416,7 @@ class Collection extends EloquentCollection
     /**
      * Remove spaces on the the orderBy fields.
      *
-     * @param  array $orderByFields Formatted array of orderByClause.
+     * @param  array $orderByFields Formatted array of orderByClause
      * @return array
      */
     private function cleanOrderByFields($orderByFields)
@@ -433,7 +433,7 @@ class Collection extends EloquentCollection
     /**
      * Create the pre-formatted array_multisort parameters.
      *
-     * @param  array $orderByFields Formatted array of orderByClause.
+     * @param  array $orderByFields Formatted array of orderByClause
      * @return array
      */
     private function createSortFields($orderByFields)
@@ -452,7 +452,7 @@ class Collection extends EloquentCollection
     /**
      * Formats sort condition of the field based on input to be used in array_multisort.
      *
-     * @param  string $field The fieldname or sort order.
+     * @param  string $field The fieldname or sort order
      * @return array
      */
     private function sortCondition($field)
@@ -539,7 +539,7 @@ class Collection extends EloquentCollection
      * Insert Record.
      *
      * @param  array  $arr     The array to be inserted
-     * @param  string $keyName Required if the value of $arr is not array.
+     * @param  string $keyName Required if the value of $arr is not array
      */
     public function insert(array $arr, $keyName = '')
     {
@@ -576,7 +576,7 @@ class Collection extends EloquentCollection
      * @param string  $fieldConditionValue    The value of the field use in comparison
      * @param string  $fieldCondition         Field name of the condition
      * @param string  $fieldConditionOpertor  The value of the field use in conditional comparison
-     * @param bool $replaceOnce            Set true to replace only the first occurence.
+     * @param bool $replaceOnce            Set true to replace only the first occurence
      */
     public function setWhere($fieldToChange, $fieldNewValue, $fieldConditionValue, $fieldCondition = 'id', $fieldConditionOperator = '===', $replaceOnce = true)
     {
@@ -591,7 +591,7 @@ class Collection extends EloquentCollection
      * @param string  $fieldConditionValue    The value of the field use in comparison
      * @param string  $fieldCondition         Field name of the condition
      * @param string  $fieldConditionOpertor  The value of the field use in conditional comparison
-     * @param bool $replaceOnce            Set true to replace only the first occurence.
+     * @param bool $replaceOnce            Set true to replace only the first occurence
      * @param bool $add                    Set true to add the current and the new value
      */
     public function setWhereAdd($fieldToChange, $fieldNewValue, $fieldConditionValue, $fieldCondition = 'id', $fieldConditionOperator = '===', $replaceOnce = true, $add = false)
@@ -607,7 +607,7 @@ class Collection extends EloquentCollection
      * @param string  $fieldConditionValue    The value of the field use in comparison
      * @param string  $fieldCondition         Field name of the condition
      * @param string  $fieldConditionOpertor  The value of the field use in conditional comparison
-     * @param bool $replaceOnce            Set true to replace only the first occurence.
+     * @param bool $replaceOnce            Set true to replace only the first occurence
      * @param bool $add                    Set true to add the current and the new value
      */
     private function setWhereHead($fieldToChange, $fieldNewValue, $fieldConditionValue, $fieldCondition = 'id', $fieldConditionOperator = '===', $replaceOnce = true, $add = false)
@@ -634,7 +634,7 @@ class Collection extends EloquentCollection
      *
      * @param string  $fieldToChange       Field name to be changed
      * @param mixed  $fieldNewValue       New Value of the field to be changed
-     * @param bool $replaceOnce         Set true to replace only the first occurence.
+     * @param bool $replaceOnce         Set true to replace only the first occurence
      */
     public function set($fieldToChange, $fieldNewValue, $replaceOnce = true)
     {

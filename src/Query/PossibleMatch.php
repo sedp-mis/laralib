@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace SedpMis\Laralib\Query;
 
 use Illuminate\Support\Facades\DB;
 use SedpMis\Lib\Makeable\MakeableTrait;
 
-class PossibleMatch 
+class PossibleMatch
 {
     use MakeableTrait;
 
@@ -21,6 +21,7 @@ class PossibleMatch
     public function matches($search)
     {
         $search = $this->parseSearch($search);
+
         return $this->model->where($this->field, 'like', $search)->orderBy(DB::raw("length({$this->field})"));
     }
 

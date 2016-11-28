@@ -40,8 +40,7 @@ if (!function_exists('drop_foreign_keys')) {
     function drop_foreign_keys($table, array $foreignKeys)
     {
         $tableName = $table->getTable();
-        foreach ($foreignKeys as $i => $key)
-        {
+        foreach ($foreignKeys as $i => $key) {
             $table->dropForeign($tableName.'_'.$key.'_foreign');
         }
     }

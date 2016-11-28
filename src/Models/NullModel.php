@@ -3,12 +3,12 @@
 namespace SedpMis\Laralib\Models;
 
 /**
- * A null model object
+ * A null model object.
  */
 class NullModel extends BaseModel
 {
     public $incrementing = null;
-    
+
     public $timestamps = null;
 
     public $exists = null;

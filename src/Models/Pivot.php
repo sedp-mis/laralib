@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * Copy-pasted from \Illuminate\Database\Eloquent\Relations\Pivot
  * and just change parent class to \SedpMis\Laralib\Models\BaseModel to inherit its behavior like typecasting.
  */
-class Pivot extends BaseModel {
-
+class Pivot extends BaseModel
+{
     /**
      * The parent model of the relationship.
      *
@@ -173,5 +173,4 @@ class Pivot extends BaseModel {
     {
         return $this->parent->getUpdatedAtColumn();
     }
-
 }
