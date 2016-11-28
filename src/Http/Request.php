@@ -3,6 +3,7 @@
 namespace SedpMis\Laralib\Http;
 
 use Illuminate\Http\Request as IlluminateRequest;
+use Illuminate\Support\Facades\App;
 
 class Request extends IlluminateRequest
 {
