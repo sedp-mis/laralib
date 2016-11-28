@@ -15,6 +15,6 @@ class Request extends IlluminateRequest
      */
     public function inputOrFail($key = null)
     {
-        return $this->input($input) ?: App::abort(404);
+        return $this->input($key) ?: App::abort(404);
     }
 }
