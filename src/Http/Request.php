@@ -5,6 +5,9 @@ namespace SedpMis\Laralib\Http;
 use Illuminate\Http\Request as IlluminateRequest;
 use Illuminate\Support\Facades\App;
 
+/**
+ * Decorator for request object, since extending to the request class is not working.
+ */
 class Request extends IlluminateRequest
 {
     /**
@@ -15,6 +18,18 @@ class Request extends IlluminateRequest
      */
     public function inputOrFail($key = null)
     {
-        return $this->input($key) ?: App::abort(400, "Missing request input `{$key}`.");
+        return App::make('request')->input($key) ?: App::abort(400, "Missing request input `{$key}`.");
+    }
+
+    /**
+     * Call original request methods.
+     *
+     * @param  mixed $method
+     * @param  mixed $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return call_user_func_array([App::make('request'), $method], $parameters);
     }
 }
