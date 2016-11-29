@@ -17,7 +17,7 @@ class Request
      */
     public function inputOrFail($key = null)
     {
-        return App::make('request')->input($key) ?: App::abort(400, "Missing request input `{$key}`.");
+        return App::make('request')->input($key) ?: App::abort(400, "Missing request key `{$key}`.");
     }
 
     /**
