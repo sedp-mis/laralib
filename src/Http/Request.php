@@ -2,13 +2,12 @@
 
 namespace SedpMis\Laralib\Http;
 
-use Illuminate\Http\Request as IlluminateRequest;
 use Illuminate\Support\Facades\App;
 
 /**
  * Decorator for request object, since extending to the request class is not working.
  */
-class Request extends IlluminateRequest
+class Request
 {
     /**
      * Retrieve an input item from the request, or else fail when empty.
