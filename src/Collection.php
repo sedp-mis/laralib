@@ -718,7 +718,7 @@ class Collection extends EloquentCollection
     }
 
     /**
-     * Append Values to a model attributes.
+     * Append values to each model's attributes.
      *
      * @param  array   $valuesToAppend    Values to be appended
      * @param  array   $fieldsToRemove    Attributes to be removed
