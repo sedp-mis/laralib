@@ -716,4 +716,43 @@ class Collection extends EloquentCollection
     {
         return $this->first($callback) ?: new NullModel;
     }
+
+    /**
+     * Append Values to a model attributes.
+     *
+     * @param  array   $valuesToAppend    Values to be appended
+     * @param  array   $fieldsToRemove    Attributes to be removed
+     * @param  bool $includePrimaryKey Append the primary key value to be saved in the database
+     * @return array
+     */
+    public function appendValues(array $valuesToAppend, array $fieldsToRemove = [], $includePrimaryKey = true)
+    {
+        $items          = [];
+        $nextInsertId   = null;
+        $primaryKeyName = null;
+
+        foreach ($this->items as $k => $item) {
+            if ($nextInsertId === null && $includePrimaryKey) {
+                $nextInsertId   = $item->nextInsertId();
+                $primaryKeyName = $item->getKeyName();
+                $nextInsertId--;
+            }
+
+            $valuesToAppend = array_merge($item->toArray(), $valuesToAppend);
+
+            if (count($fieldsToRemove)) {
+                foreach ($fieldsToRemove as $key => $fieldToRemove) {
+                    unset($valuesToAppend[$fieldToRemove]);
+                }
+            }
+
+            if ($primaryKeyName) {
+                $valuesToAppend[$primaryKeyName] = ++$nextInsertId;
+            }
+
+            $items[] = $valuesToAppend;
+        }
+
+        return $items;
+    }
 }
