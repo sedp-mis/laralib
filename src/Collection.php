@@ -738,19 +738,19 @@ class Collection extends EloquentCollection
                 $nextInsertId--;
             }
 
-            $valuesToAppend = array_merge($item->toArray(), $valuesToAppend);
+            $valuesAppended = array_merge($item->toArray(), $valuesToAppend);
 
             if (count($fieldsToRemove)) {
                 foreach ($fieldsToRemove as $key => $fieldToRemove) {
-                    unset($valuesToAppend[$fieldToRemove]);
+                    unset($valuesAppended[$fieldToRemove]);
                 }
             }
 
             if ($primaryKeyName) {
-                $valuesToAppend[$primaryKeyName] = ++$nextInsertId;
+                $valuesAppended[$primaryKeyName] = ++$nextInsertId;
             }
 
-            $items[] = $valuesToAppend;
+            $items[] = $valuesAppended;
         }
 
         return $items;
