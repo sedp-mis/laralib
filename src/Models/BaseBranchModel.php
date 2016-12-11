@@ -56,8 +56,10 @@ class BaseBranchModel extends BaseModel
      */
     public function validateBranchInsert()
     {
+        $class = get_class($this);
+
         if (is_null($this->tail)) {
-            throw new \Exception('Property $tail is not set in branch model '.get_class($this));
+            throw new \Exception('Property $tail is not set in branch model '.$class);
         }
 
         if ($this->incrementing) {
@@ -65,7 +67,7 @@ class BaseBranchModel extends BaseModel
         }
 
         if (empty($this->primaryKeyPrefix())) {
-            throw new \Exception("Performing branch insert on model {$this->getClass()} must have a primaryKeyPrefix e.g. branch_id.");
+            throw new \Exception("Performing branch insert on model {$class} must have a primaryKeyPrefix e.g. branch_id.");
         }
     }
 
