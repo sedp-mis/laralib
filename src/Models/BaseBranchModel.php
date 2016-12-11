@@ -30,10 +30,22 @@ class BaseBranchModel extends BaseModel
 
         $primaryPrefix = $this->primaryKeyPrefix();
 
-        $maxId = static::where($keyName = $this->getKeyName(), 'like', "{$primaryPrefix}%")->max($keyName);
+        $maxId = static::where($keyName = $this->getKeyName(), 'like', "{$primaryPrefix}%")
+            ->where(DB::raw("char_length({$this->getKeyName()})"), '=', $this->pkCharLength())
+            ->max($keyName);
         $maxId = $maxId ?: $primaryPrefix.$this->tail;
 
         return ++$maxId;
+    }
+
+    /**
+     * The char_length to be check when retrieving the max value of primary key.
+     *
+     * @return int|string
+     */
+    public function pkCharLength()
+    {
+        return strlen($this->tail) + strlen($this->primaryKeyPrefix());
     }
 
     /**
