@@ -5,6 +5,7 @@ namespace SedpMis\Laralib;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use SedpMis\Laralib\Models\NullModel;
 use SedpMis\Laralib\Models\NullObject;
+use Services\Migration\NextInsertIds;
 use Closure;
 
 class Collection extends EloquentCollection
@@ -730,27 +731,24 @@ class Collection extends EloquentCollection
         $items          = [];
         $nextInsertId   = null;
         $primaryKeyName = null;
+        $srcItems       = $this->toArray();
 
-        foreach ($this->items as $k => $item) {
-            if ($nextInsertId === null && $includePrimaryKey) {
-                $nextInsertId   = $item->nextInsertId();
-                $primaryKeyName = $item->getKeyName();
-                $nextInsertId--;
+        $niids = new NextInsertIds($this->first(), $srcItems, true);
+
+        foreach ($srcItems as $k => $item) {
+            $item = array_merge($item, $valuesToAppend);
+
+            if ($includePrimaryKey && $this->first()->getKeyName()) {
+                $item[$this->first()->getKeyName()] = $niids->get($item);
             }
-
-            $valuesAppended = array_merge($item->toArray(), $valuesToAppend);
 
             if (count($fieldsToRemove)) {
                 foreach ($fieldsToRemove as $key => $fieldToRemove) {
-                    unset($valuesAppended[$fieldToRemove]);
+                    unset($item[$fieldToRemove]);
                 }
             }
 
-            if ($primaryKeyName) {
-                $valuesAppended[$primaryKeyName] = ++$nextInsertId;
-            }
-
-            $items[] = $valuesAppended;
+            $items[] = $item;
         }
 
         return $items;
