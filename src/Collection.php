@@ -732,8 +732,11 @@ class Collection extends EloquentCollection
         $nextInsertId   = null;
         $primaryKeyName = null;
         $srcItems       = $this->toArray();
+        $niids          = null;
 
-        $niids = new NextInsertIds($this->first(), $srcItems, true);
+        if ($includePrimaryKey) {
+            $niids = new NextInsertIds($this->first(), $srcItems, true);
+        }
 
         foreach ($srcItems as $k => $item) {
             $item = array_merge($item, $valuesToAppend);
